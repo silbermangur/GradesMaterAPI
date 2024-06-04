@@ -8,11 +8,18 @@
  2) update-Database
  */
 
+
+// Opertion On DBSET Collection will be reflected to the DB Without SQL Sytax
 namespace GradesMaterAPI.DB
 {
     public class GradeMasterDbContext: DbContext
     {
         
+        public GradeMasterDbContext()
+        {
+
+        }
+
         public GradeMasterDbContext(DbContextOptions<GradeMasterDbContext> options) : base(options) { }
       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,8 +34,11 @@ namespace GradesMaterAPI.DB
             
         }
 
+        // Related Teacher Table
         public DbSet<DbModels.Teacher> Teachers { get; set; }
+        // Related Students Table
         public DbSet<DbModels.Student> Student { get; set; }
+        // Related Courses Table
         public DbSet<DbModels.Course> Courses { get; set; }
 
     }

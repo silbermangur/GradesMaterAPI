@@ -1,0 +1,19 @@
+1) Add Nugets EF
+	- Microsoft.EntityFreamework.Core
+	- Microsoft.EntityFreamework.SqlServer
+	- Microsoft.EntityFreamework.Tools
+	- Microsoft.EntityFreamework.Design
+
+2) Add Models with all Db Properties Navigition Properties ( the properties that are use to navigate betweeen clases)
+
+3) Create DbContext class that inhirete DbContext
+	- Hold ALL DbSet<> Collection <---> DB table
+	- Track Change of the Objects
+	- ConnectionString
+
+4) Add dbContext to service with Connection string
+
+5) Generate Migration Script
+	- Add-Migration InitialCreate Enable to handle version
+	- Update-DataBase
+------------------------------------------------------------------------------

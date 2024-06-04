@@ -22,5 +22,16 @@ namespace GradesMaterAPI.DB.DbModels
 
         public DateTime EnrollmentDate { get; set; }
 
+        // all the has and Submit in the ERD Digram
+        public ICollection<Enrollment> enrollments { get; set; }
+        public ICollection<AssignmentSubmission> Assignmentsubmission { get; set; }
+
+        public ICollection<ExamSubmission> Examsubmission { get; set; }
+
+        public ICollection<Attendance> attendances { get; set; }
+
+        public ICollection<Grade> FinalGrade { get; set; }
+
+
     }
 }
