@@ -16,6 +16,6 @@
          
         public Course Course { get; set; }
 
-        public AssignmentSubmission assignmentSubmission { get; set; }
+        public ICollection<AssignmentSubmission> AssignmentSubmission { get; set; }
     }
 }

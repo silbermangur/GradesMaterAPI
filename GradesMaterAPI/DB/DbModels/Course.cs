@@ -17,6 +17,9 @@
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 
         public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
+
+        public ICollection<Grade> FinalGrades { get; set; }
+
         #endregion
     }
 }
