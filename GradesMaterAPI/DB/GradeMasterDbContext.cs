@@ -25,7 +25,7 @@ namespace GradesMaterAPI.DB
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\\\ProjectModels;Initial Catalog=GradeMasterdb_EFDb;Integrated Security=True;Connect Timeout=30;");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-PR461MF\\SQLEXPRESS;Initial Catalog=GradeMasterdb_EFDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

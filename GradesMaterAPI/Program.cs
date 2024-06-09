@@ -18,7 +18,7 @@ namespace GradesMaterAPI
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<GradeMasterDbContext>(options =>
             {
-                options.UseSqlServer("Data Source=(localdb)\\\\ProjectModels;Initial Catalog=GradeMasterdb_EFDb;Integrated Security=True;Connect Timeout=30;");
+                options.UseSqlServer("Data Source=DESKTOP-PR461MF\\SQLEXPRESS;Initial Catalog=GradeMasterdb_EFDb;Integrated Security=True;Connect Timeout=30;");
             });
             var app = builder.Build();
 

@@ -17,3 +17,26 @@
 	- Add-Migration InitialCreate Enable to handle version
 	- Update-DataBase
 ------------------------------------------------------------------------------
+
+1) install EntityFreamWork and his packages
+	- right click on the project -> Manage NuGet Packages
+	- search Microsoft.Entity.FreamworkCore
+	- install: Microsoft.EntityFrameworkCore.SqlServer
+	- install: Microsoft.EntityFrameworkCore.Design
+	- install: Microsoft.EntityFrameworkCore.Tools
+
+2) Describe your Entity Model build your Models Folder
+
+3) create EF Core migration
+	- go to Tools -> NuGet Package Manger -> Package Manager Console
+	- type the commend: Add-Migration InitialCreate
+	if you happy with this Migration version continou
+	type the commend:
+	- Update-Database
+	Now it will create for you a database and save the migiration in the Migiration table
+	-----------------------------------------------------------
+	Now if we want to update a table we can add a new field to one of the models
+	and the type:
+	1) Add-Migration <your_migration_name>
+	2) Update-Database
+
