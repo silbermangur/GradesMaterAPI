@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GradesMaterAPI.DB;
 using GradesMaterAPI.DB.DbModels;
+using GradesMaterAPI.ApiModel;
 
 namespace GradesMaterAPI.Controllers
 {
@@ -76,12 +77,19 @@ namespace GradesMaterAPI.Controllers
         // POST: api/Teachers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Teacher>> PostTeacher(Teacher teacher)
+        public async Task<ActionResult<Teacher>> PostTeacher(TeacherDTO teacherDto)
         {
+            //teacherDto.Id = _context.Entry();
+            var teacher = new Teacher { FirstName = teacherDto.FirstName, LastName = teacherDto.LastName, Email = teacherDto.Email, PhoneNumber = teacherDto.PhoneNumber, Password = teacherDto.Password };
+            
+            
             // Add to Db
             _context.Teachers.Add(teacher);
             await _context.SaveChangesAsync();
 
+            // 201
+            // response header: api/teacher/5 in response header
+            // body: teacher
             return CreatedAtAction("GetTeacher", new { id = teacher.Id }, teacher);
         }
 
