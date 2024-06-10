@@ -32,7 +32,7 @@ namespace GradesMaterAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Teacher>> GetTeacher(int id)
         {
-            var teacher = await _context.Teachers.FindAsync(id);
+            var teacher = await _context.Teachers.FindAsync(id); // SELECT Where
 
             if (teacher == null)
             {
@@ -78,6 +78,7 @@ namespace GradesMaterAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Teacher>> PostTeacher(Teacher teacher)
         {
+            // Add to Db
             _context.Teachers.Add(teacher);
             await _context.SaveChangesAsync();
 
