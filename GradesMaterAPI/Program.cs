@@ -1,5 +1,6 @@
 
 using GradesMaterAPI.DB;
+using GradesMaterAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GradesMaterAPI
@@ -26,6 +27,10 @@ namespace GradesMaterAPI
             });
 
             // TODO Add Onther Service Here....
+            // When the application load she build the CsvLoader
+            // AddSingleton when that it will inilaze only one intsatnce at a time
+            builder.Services.AddSingleton<ICsvLoader, CsvLoader>();
+
 
             var app = builder.Build();
             using (var scope = app.Services.CreateScope())

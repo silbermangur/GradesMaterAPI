@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GradesMaterAPI.DB;
 using GradesMaterAPI.DB.DbModels;
 using GradesMaterAPI.ApiModel;
+using GradesMaterAPI.Services;
 
 namespace GradesMaterAPI.Controllers
 {
@@ -16,10 +17,19 @@ namespace GradesMaterAPI.Controllers
     public class TeachersController : ControllerBase
     {
         private readonly GradeMasterDbContext _context;
-
-        public TeachersController(GradeMasterDbContext context)
+        ICsvLoader _csvLoader;
+        // dependecy Injection - is the ICsvLoader loader
+        public TeachersController(GradeMasterDbContext context, ICsvLoader loader)
         {
             _context = context;
+            _csvLoader = loader;
+        }
+
+        // GET: api/Teachers/sorted
+        [HttpGet("sorted")]
+        public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachersSortedBy(string sortedBy="")
+        {
+            return await _context.Teachers.OrderBy(t => t.LastName).ToListAsync();
         }
 
         // GET: api/Teachers
@@ -33,6 +43,11 @@ namespace GradesMaterAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Teacher>> GetTeacher(int id)
         {
+            if(_csvLoader != null)
+            {
+                _csvLoader.test();
+            }
+
             var teacher = await _context.Teachers.FindAsync(id); // SELECT Where
 
             if (teacher == null)
@@ -88,7 +103,7 @@ namespace GradesMaterAPI.Controllers
             await _context.SaveChangesAsync();
 
             // 201
-            // response header: api/teacher/5 in response header
+            // response header (location): api/teacher/5 in response header
             // body: teacher
             return CreatedAtAction("GetTeacher", new { id = teacher.Id }, teacher);
         }
