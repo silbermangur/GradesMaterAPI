@@ -40,3 +40,4 @@
 	1) Add-Migration <your_migration_name>
 	2) Update-Database
 
+	
