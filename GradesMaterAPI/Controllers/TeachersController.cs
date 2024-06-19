@@ -39,14 +39,35 @@ namespace GradesMaterAPI.Controllers
             return await _context.Teachers.ToListAsync(); // SELECT SQL
         }
 
+
+        [HttpGet("GetExcelPath/{path}")]
+        public IActionResult GetExcelPath(string path)
+        {
+            // Assuming the path is relative to a specific directory in your server
+            var basePath = Path.Combine(Directory.GetCurrentDirectory());
+            var fullPath = Path.Combine(basePath, path);
+
+            // Check if the file exists
+            if (!System.IO.File.Exists(fullPath))
+            {
+                return NotFound(new { message = "File not found" });
+            }
+
+           _csvLoader.test(fullPath);
+            return Ok(new { massage = $"{fullPath}" });
+        }
+        
+
         // GET: api/Teachers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Teacher>> GetTeacher(int id)
         {
+            /*
             if(_csvLoader != null)
             {
                 _csvLoader.test();
             }
+            */
 
             var teacher = await _context.Teachers.FindAsync(id); // SELECT Where
 

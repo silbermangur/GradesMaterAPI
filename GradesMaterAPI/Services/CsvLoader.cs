@@ -1,18 +1,30 @@
-﻿namespace GradesMaterAPI.Services
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using CsvHelper;
+
+namespace GradesMaterAPI.Services
 {
     public class CsvLoader : ICsvLoader
     {
-        string testVal = "";
-        public CsvLoader()
-        {
-            testVal = Guid.NewGuid().ToString();
-        }
+        private string path="";
+        public CsvLoader(){}
 
-     
+        public string Path {
+            get 
+            { 
+                return path; 
+            }  set 
+            {
+                path = value; 
+            }
+        } 
 
-        public string test()
+        public void test(string p)
         {
-            throw new NotImplementedException();
+             path = p;
+             Console.WriteLine(Path);
         }
     }
 }

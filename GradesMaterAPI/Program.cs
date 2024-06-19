@@ -27,8 +27,8 @@ namespace GradesMaterAPI
             });
 
             // TODO Add Onther Service Here....
-            // When the application load she build the CsvLoader
-            // AddSingleton when that it will inilaze only one intsatnce at a time
+            // When the application load she build the CsvLoader from the interface ICsvLoader
+            // AddSingleton when that it will inilaze only one intsatnce at a time the app mount
             builder.Services.AddSingleton<ICsvLoader, CsvLoader>();
 
 

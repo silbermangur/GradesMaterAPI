@@ -3,6 +3,6 @@
     public interface ICsvLoader
     {
 
-        public string test();
+        public void test(string p);
     }
 }
