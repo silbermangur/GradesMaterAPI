@@ -62,19 +62,12 @@ namespace GradesMaterAPI.Controllers
             return Ok(new { massage = $"{fullPath}" });
         }
 
+        // TODO - need to provide with the excel name in the path, and remove unnneccery "" (quets)
 
         [HttpGet("GetExportExcel/{path}")]
         public IActionResult GetExportExcel(string path, GradeMasterDbContext dbContext)
         {
             List<Teacher> teachers = dbContext.Teachers.ToList();
-
-            /*
-            var people = new List<Person>
-        {
-            new Person { Id = 1, Name = "John Doe", Age = 30 },
-            new Person { Id = 2, Name = "Jane Smith", Age = 25 }
-        };
-            */
 
             string csvFilePath = path;
             this._export.Export(path, teachers);
